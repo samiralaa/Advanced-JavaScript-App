@@ -1,0 +1,108 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.cube-container {
+    perspective: 1000px;
+}
+
+.cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg) rotateY(-30deg);
+    animation: rotate 5s infinite linear;
+}
+
+.face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(0, 128, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.front  { transform: translateZ(100px); }
+.back   { transform: rotateY(180deg) translateZ(100px); }
+.left   { transform: rotateY(-90deg) translateZ(100px); }
+.right  { transform: rotateY(90deg) translateZ(100px); }
+.top    { transform: rotateX(90deg) translateZ(100px); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+@keyframes rotate {
+    from {
+        transform: rotateX(-30deg) rotateY(-30deg);
+    }
+    to {
+        transform: rotateX(-30deg) rotateY(330deg);
+    }
+}
+
+
+.circle-container {
+    perspective: 1000px;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ff6b6b;
+    position: absolute;
+    animation: move 4s infinite ease-in-out;
+}
+
+@keyframes move {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(300px, 0); /* Move right */
+    }
+    50% {
+        transform: translate(300px, 300px); /* Move down */
+    }
+    75% {
+        transform: translate(0, 300px); /* Move left */
+    }
+    100% {
+        transform: translate(0, 0); /* Move up (back to start) */
+    }
+}
+
+
+.earth-container {
+    perspective: 1000px;
+}
+
+.earth {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, #006994, #003366);
+    background-size: cover;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9d/World_map_blank_without_borders.svg');
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    animation: rotateEarth 10s infinite linear;
+    transform-style: preserve-3d;
+}
+
+@keyframes rotateEarth {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
